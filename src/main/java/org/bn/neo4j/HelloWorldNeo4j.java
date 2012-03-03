@@ -4,8 +4,13 @@ import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.kernel.EmbeddedGraphDatabase;
 
+/**
+ * Simple program to understand how embedded neo4j db can be used with java.
+ * @author suraj
+ *
+ */
 public class HelloWorldNeo4j {
-	private static final long MAX = 100000;
+	private static final long MAX = 1000;
 	private EmbeddedGraphDatabase graphDB;
 	private final String STORE_DIR="/home/suraj/programs";
 	/**
@@ -18,6 +23,9 @@ public class HelloWorldNeo4j {
 		helloWorldNeo4j.readNodes();
 		helloWorldNeo4j.deleteNodes();
 	}
+	/**
+	 * Delete all the nodes present in the db.
+	 */
 	public void deleteNodes() {
 		Transaction tx = graphDB.beginTx();
 		try {
@@ -30,9 +38,15 @@ public class HelloWorldNeo4j {
 			tx.finish();
 		}
 	}
+	/**
+	 * Creates a new neo4j db.
+	 */
 	public void createDB(){
 		graphDB=new EmbeddedGraphDatabase(STORE_DIR);
 	}
+	/**
+	 * Creates the new nodes.
+	 */
 	public void createNodes(){
 		Transaction tx = graphDB.beginTx();
 		try {
@@ -46,6 +60,9 @@ public class HelloWorldNeo4j {
 			tx.finish();
 		}
 	}
+	/**
+	 * Reading all values.
+	 */
 	public void readNodes(){
 		for(Node node:graphDB.getAllNodes()){
 			for(String key:node.getPropertyKeys()){

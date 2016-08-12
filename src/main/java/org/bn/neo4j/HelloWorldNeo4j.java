@@ -7,7 +7,7 @@ import org.neo4j.kernel.EmbeddedGraphDatabase;
 /**
  * Simple program to understand how embedded neo4j db can be used with java.
  * @author suraj
- *
+ * Testing.
  */
 public class HelloWorldNeo4j {
 	private static final long MAX = 1000;
